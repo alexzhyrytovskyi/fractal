@@ -1,6 +1,6 @@
 /*
 	authors: 
-		Oleksandr Zhyrytovskyi,
+		Alex Zhyrytovskyi,
 		Valeriy Balabanov
 	  
 	created: 07.03.2014
