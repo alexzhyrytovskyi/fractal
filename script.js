@@ -34,7 +34,7 @@ function mixColors(color1, color2, i, n) {
 		(color2[0] - color1[0]) * i / n + color1[0],
 		(color2[1] - color1[1]) * i / n + color1[1],
 		(color2[2] - color1[2]) * i / n + color1[2]
-	]
+	];
 }
 
 function initPalette() {
@@ -79,32 +79,32 @@ function drawFractal() {
 	canvas = document.getElementById("canvas");
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
-    ctx = canvas.getContext("2d");
+	ctx = canvas.getContext("2d");
 	image = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    pixels = image.data;
-	
+	pixels = image.data;
+
 	var timestamp = new Date().getTime();
-	
+
 	var size = canvas.width < canvas.height ? canvas.width : canvas.height;
 	var left = (canvas.width - size) / 2;
 	var top = (canvas.height - size) / 2;
-	
+
 	var kx = (x2 - x1) / size;
 	var ky = (y2 - y1) / size;
 	for (var y = 0; y < canvas.height; y++) {
-        for (var x = 0; x < canvas.width; x++) {
+		for (var x = 0; x < canvas.width; x++) {
 			var i = x1 + (x - left) * kx;
 			var j = y1 + (y - top) * ky;
 			var n = mandelbrot(i, j);
 			var color = palette[n];
 			putPixel(x, y, color);
-        }
-    }
-	
+		}
+	}
+
 	var timeout = new Date().getTime() - timestamp;
 	document.getElementById('timeout').innerHTML = 'Frame timeout: ' + timeout + ' ms';
 
-    ctx.putImageData(image, 0, 0);
+	ctx.putImageData(image, 0, 0);
 }
 
 function onMouseDown(e) {
@@ -113,7 +113,7 @@ function onMouseDown(e) {
 		var mouseY = e.clientY - canvas.offsetTop;
 		var cw2 = canvas.width / 2;
 		var ch2 = canvas.height / 2;
-		
+
 		var dx = (x2 - x1) / 2.0 * 0.6;
 		var dy = (y2 - y1) / 2.0 * 0.6;	
 		var xc = (x2 + x1) / 2.0 + 0.8 * (x2 - x1) / 2.0 * (mouseX - cw2) / cw2;
@@ -122,7 +122,7 @@ function onMouseDown(e) {
 		y1 = yc - dy;
 		x2 = xc + dx;
 		y2 = yc + dy;
-		
+
 		drawFractal();
 	}
 }
@@ -133,8 +133,8 @@ function onLoad() {
 
 	initColors();
 	initPalette();
-	
-    drawFractal();
+
+	drawFractal();
 }
 
 function onReset() {
